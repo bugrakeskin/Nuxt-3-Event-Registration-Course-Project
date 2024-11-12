@@ -1,0 +1,20 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "'JetBrainsMono Nerd Font Mono'",
+  "editor.formatOnSave": true,
+  "explorer.compactFolders": false,
+  "css.validate": false,
+  "workbench.iconTheme": "material-icon-theme",
+  "git.autofetch": true,
+  "codeium.enableConfig": {
+    "*": true,
+    "properties": true
+  },
+  "terminal.integrated.fontFamily": "monospace",
+  "workbench.colorTheme": "Tokyo Night",
+  "editor.wordWrap": "on",
+  "material-icon-theme.activeIconPack": "vue",
+  "explorer.confirmDragAndDrop": false,
+  "debug.console.acceptSuggestionOnEnter": "on"
+}
