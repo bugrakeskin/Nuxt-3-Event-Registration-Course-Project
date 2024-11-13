@@ -4,11 +4,11 @@
     <h2 class="text-2xl">All Events</h2>
     <div class="grid grid-cols-3 gap-4">
       <EventCard
-        v-for="event in fetchEvents()"
+        v-for="event in events"
         :key="event.id"
-        title="event.title"
-        description="event.description"
-        when="event.date"
+        :title="event.title"
+        :description="event.description"
+        :when="event.date"
         @register="console.log('register')"
       />
     </div>
@@ -25,13 +25,27 @@
 </template>
 
 <script lang="ts" setup>
-onMounted(() => {
-  fetchEvents();
-});
+interface Event {
+  id: string;
+  title: string;
+  date: string;
+  description: string;
+  location: string;
+}
+
+const events = ref<Event[]>([]);
+
 const fetchEvents = async () => {
-  const response = await fetch("/data/event-data.json");
-  const data = await response.json();
+  const { data } = await useFetch<{ events: Event[] }>("/data/event-data.json");
+  if (data.value && data.value.events) {
+    events.value = data.value.events as Event[];
+    console.log(events.value);
+  } else {
+    console.error("Veri formatı beklenenden farklı.");
+  }
 };
+
+onMounted(fetchEvents);
 </script>
 
 <style></style>
